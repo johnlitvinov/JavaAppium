@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.junit4.DisplayName;
 import lib.CoreTestCase;
 import lib.Platform;
 import lib.ui.ArticalePageObject;
@@ -10,10 +11,12 @@ import lib.ui.factories.ArticalPageObjectFactory;
 import lib.ui.factories.MyListObjectFactory;
 import lib.ui.factories.NavigationUIFactory;
 import lib.ui.factories.SearchPageObjectFactory;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class Ex11 extends CoreTestCase {
     @Test
+    @DisplayName("testEx11")
     public void testEx11() {
 
         String search_line = "Kotlin";
@@ -86,7 +89,7 @@ public class Ex11 extends CoreTestCase {
         ArticalePageObject ArticalePageObject = ArticalPageObjectFactory.get(driver);
         String actualArticaleTitle = ArticalePageObject.getArticaleTitle();
         ArticalePageObject.checkCellOnTheScreen();
-        assertEquals("Not equals text titles", secondArticleTitle, actualArticaleTitle);
+        Assert.assertEquals("Not equals text titles", secondArticleTitle, actualArticaleTitle);
 
         //ADDITIONAL CHECK
         //Here i check cells on the screen

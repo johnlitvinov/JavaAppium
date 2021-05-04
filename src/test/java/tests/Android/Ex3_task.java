@@ -1,5 +1,6 @@
 package tests.Android;
 
+import io.qameta.allure.junit4.DisplayName;
 import lib.*;
 import lib.ui.ArticalePageObject;
 import lib.ui.SearchPageObject;
@@ -10,6 +11,7 @@ import org.junit.Test;
 public class Ex3_task extends CoreTestCase {
 
     @Test
+    @DisplayName("testEx3")
     public void testEx3()
     {
         if (Platform.getInstance().isIOS()){ return;}

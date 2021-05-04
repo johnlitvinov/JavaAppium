@@ -1,5 +1,6 @@
 package tests.Android;
 
+import io.qameta.allure.junit4.DisplayName;
 import lib.*;
 import lib.ui.ArticalePageObject;
 import lib.ui.MyListsObject;
@@ -9,11 +10,13 @@ import lib.ui.factories.ArticalPageObjectFactory;
 import lib.ui.factories.MyListObjectFactory;
 import lib.ui.factories.NavigationUIFactory;
 import lib.ui.factories.SearchPageObjectFactory;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class Ex5_task extends CoreTestCase {
 
     @Test
+    @DisplayName("testEx5")
     public void testEx5() {
 
         String search_line = "Kotlin";
@@ -85,6 +88,6 @@ public class Ex5_task extends CoreTestCase {
         ArticalePageObject ArticalePageObject = ArticalPageObjectFactory.get(driver);
         String actualArticaleTitle = ArticalePageObject.getArticaleTitle();
 
-        assertEquals("Not equals text titles", secondArticleTitle, actualArticaleTitle);
+        Assert.assertEquals("Not equals text titles", secondArticleTitle, actualArticaleTitle);
     }
 }//end class

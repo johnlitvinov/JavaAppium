@@ -1,6 +1,7 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import lib.Platform;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -26,6 +27,7 @@ abstract public class ArticalePageObject extends MainPageObject {
         super(driver);
     }
 
+    @Step("waitForTitleElement")
     public WebElement waitForTitleElement() {
         return this.waitForElementPresent(
                 TITLE,
@@ -34,8 +36,10 @@ abstract public class ArticalePageObject extends MainPageObject {
         );
     }
 
+    @Step("getArticaleTitle")
     public String getArticaleTitle() {
         WebElement title_element = waitForTitleElement();
+        screenShot(this.takeScreenshot("article_title"));
         if (Platform.getInstance().isAndroid()) {
             return title_element.getAttribute("text");
         } else if (Platform.getInstance().isIOS()) {
@@ -44,7 +48,7 @@ abstract public class ArticalePageObject extends MainPageObject {
             return title_element.getText();
         }
     }
-
+    @Step("getArticaleTitle")
     public void addArticleToMyList(String name_of_folder) {
         this.waitForElementAndClick(
                 OPTION_BUTTON,
@@ -88,7 +92,7 @@ abstract public class ArticalePageObject extends MainPageObject {
 
 
 
-
+    @Step("closeArticle")
     public void closeArticle() {
 
         if(Platform.getInstance().isIOS() || Platform.getInstance().isAndroid()){
@@ -102,6 +106,7 @@ abstract public class ArticalePageObject extends MainPageObject {
         }
     }
 
+    @Step("addtitle_to_actual_folder")
     public void addtitle_to_actual_folder() {
         this.waitForElementAndClick(
                 MORE_OPTIONS,
@@ -121,7 +126,7 @@ abstract public class ArticalePageObject extends MainPageObject {
         );
     }
 
-
+    @Step("addArticalToMeSavedList")
     public void addArticalToMeSavedList() {
         if (Platform.getInstance().isMW()){
             this.removeArticleFromSaved();
@@ -133,13 +138,14 @@ abstract public class ArticalePageObject extends MainPageObject {
         );
     }
 
+    @Step("removeArticleFromSaved")
     public void removeArticleFromSaved(){
         if(this.isElementPresent(REMOVE_FROM_MY_LIST_BUTTON)){
             this.waitForElementAndClick(REMOVE_FROM_MY_LIST_BUTTON,"Cant remove articale",10);
             this.waitForElementPresent(REMOVE_FROM_MY_LIST_BUTTON,"Cannot find remove button",10);
         }
     }
-
+    @Step("checkCellOnTheScreen")
     public WebElement checkCellOnTheScreen() {
         return this.waitForElementPresent(
                 CELL,
@@ -148,7 +154,7 @@ abstract public class ArticalePageObject extends MainPageObject {
         );
     }
 
-
+    @Step("swipeToFooter")
     public void swipeToFooter(){
         if(Platform.getInstance().isMW()){
          this.scrollWebPAgeTitleElementNOTVisiable(
